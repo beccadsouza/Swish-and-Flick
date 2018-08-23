@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
-from django.http import HttpResponseRedirect
+
 def signup_view(request):
     if request.method == 'POST':
          form = UserCreationForm(request.POST)
@@ -9,8 +9,7 @@ def signup_view(request):
              user = form.save()
              login(request, user)
              return redirect('spells:list')
-    else:
-        form = UserCreationForm()
+    else: form = UserCreationForm()
     return render(request, 'accounts/signup.html', { 'form': form })
 
 def login_view(request):
@@ -23,13 +22,11 @@ def login_view(request):
             if 'next' in request.POST:
                 return redirect(request.POST.get('next'))
                 # return redirect('spells:create')
-            else:
-               return redirect('spells:list')
-    else:
-        form = AuthenticationForm()
+            else:return redirect('spells:list')
+    else:form = AuthenticationForm()
     return render(request, 'accounts/login.html', { 'form': form })
 
 def logout_view(request):
     if request.method == 'POST':
-            logout(request)
-            return redirect('spells:list')
+        logout(request)
+        return redirect('spells:list')

@@ -1,5 +1,4 @@
 {% extends 'skeleton.html' %}
-
 {% block content %}
 <style>
         *{
@@ -9,17 +8,7 @@
             font-size: 1.5rem;
             color: white;
         }
-    #id_image{
-            background-color: #0e1e2a;
-            color: #fff;
-            cursor: pointer;
-            font-family: "Harry Potter",sans-serif;
-            font-size: 1.5rem;
-            border-width: 2px;
-            border-color: white;
-            padding: 15px;
-        }
-    .why{
+        .why{
             background: none;
             color: #fff;
             cursor: pointer;
@@ -29,9 +18,7 @@
             border-color: white;
             padding: 15px;
         }
-
 </style>
-
     <div class="container" id="terms1">
     <br><br><br>
     <p style="font-size:2rem;margin-bottom: -40px" class="center-align">CONTRIBUTE TO A SPELL POST!</p>
@@ -41,14 +28,7 @@
             <p style="font-size: 5rem">
                 {{ field.label_tag }}<br>
                 <span style="font-size:0.2em ">{{ field }}</span>
-{#                {% if field.help_text %}#}
-{#                  <p style="color: grey">{{ field.help_text }}</p>#}
-{#                {% endif %}#}
-{#                {% for error in field.errors %}#}
-{#                  <p style="color:red">{{ error }}</p>#}
-{#                {% endfor %}#}
             </p>
-
         {% endfor %}
 
         <div id="wrapper" style="height:0.5px;width:0.5px"></div>
