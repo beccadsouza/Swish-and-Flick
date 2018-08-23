@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+
+{% block content%}
+   <style>
+        .extra {
+            position: relative;
+            width: 50%;
+            display:inline;
+            float:left;
+        }
+        .image {
+             display: block;
+        }
+        .overlay {
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              height: 100%;
+              width: 100%;
+              opacity: 0;
+              transition: .5s ease;
+              background-color: #116466;
+        }
+
+        .extra:hover .overlay {
+            opacity: 1;
+        }
+        .text-2 a {
+              color: #ffcb98;
+              font-size: 20px;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              -webkit-transform: translate(-50%, -50%);
+              -ms-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+              text-align: center;
+        }
+
+
+        </style>
+
+        <div class="row" style="width:100%;margin-bottom:0.5px;background-color: #0e1e2a">
+
+                {% for spell in spells %}
+                    <div class="extra">
+                        <img src="{{ spell.image.url }}" class="image" style="height: 400px;width:674.5px">
+                        <div class="overlay">
+                            <div class="text-2">
+                                <a href="{% url 'spells:detail' slug=spell.slug %}" style="font-size: 4rem">
+                                {{ spell.spell_name }}
+                                </a>
+                            </div>
+                        </div>
+{#                        <div class="text-2">#}
+{#                            <a href="{% url 'spells:detail' slug=spell.slug %}" style="font-size: 4rem">#}
+{#                                {{ spell.spell_name }}#}
+{#                            </a>#}
+{#                        </div>#}
+                    </div>
+                {% endfor %}
+        </div>
+
+{% endblock %}

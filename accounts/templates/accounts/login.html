@@ -1,0 +1,55 @@
+{#{% extends 'skeleton.html' %}#}
+{##}
+{#{% block content %}#}
+    <style>
+        *{
+            color:white ;
+        }
+        label{
+            font-size: 1.5rem;
+            color: white;
+        }
+     .wrap {
+    text-align: center;
+    }
+    </style>
+    <div class="container" style="width:100%">
+{#    <br><br><br>#}
+{#    {% if request.GET.next %}#}
+{#        {% if not user.is_authenticated %}#}
+{#           <p style="font-size:1rem;margin-bottom: -40px" class="center-align">Please log in first!</p><br><br><br>#}
+{#        {% endif %}#}
+    <form class="site-form" action="{% url 'accounts:login' %}" method="post">
+        {% csrf_token %}
+         {% for field in form %}
+                <p style="font-size: 1.5rem">
+                    <p class="center-align">{{ field.label_tag }}</p><br>
+                    <p style="margin-top: -20px">{{ field }}</p>
+                </p>
+         {% endfor %}
+{#        <p style="font-size: 1.5rem">#}
+{#            <label for="id_username">Email</label>#}
+{#            {{ form.username }}#}
+{#        </p>#}
+{#        <p style="font-size: 1.5rem">#}
+{#            <label for="id_password">Password</label>#}
+{#            {{ form.password }}#}
+{#        </p>#}
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}" />
+        {% endif %}
+
+        <div class="wrap">
+            <button type="submit" value="Login" class="btn waves-light">Login</button>
+        </div>
+    </form>
+    <p style="font-size:1.5rem" class="center-align">Not got an account? <a href="#" id="signupp" class="indigo-text">Sign Up</a></p>
+    </div>
+    <script>
+        $('#signupp').click(function () {
+           {#alert('signup should come');#}
+        $('#one').load("{% url 'accounts:signup' %}");
+
+        });
+    </script>
+{#{% endblock %}#}

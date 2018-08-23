@@ -1,0 +1,45 @@
+{#{% extends 'skeleton.html' %}#}
+
+{#{% block content %}#}
+    <style>
+        *{
+            color:white ;
+        }
+        label{
+            font-size: 1.5rem;
+            color: white;
+        }
+    button{
+            background: none;
+            color: #fff;
+            cursor: pointer;
+            font-family: "Harry Potter",sans-serif;
+            font-size: 2rem;
+            border-width: 2px;
+            border-color: white;
+            padding: 15px;
+        }
+    </style>
+    <div class="container" style="background-color: rgba(14,30,42,0.59)">
+    <br><br><br>
+    <form class="site-form" action="{% url 'accounts:signup' %}" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <p style="font-size: 5rem">
+                {{ field.label_tag }}<br>
+                {{ field }}
+            </p>
+        {% endfor %}
+        <div id="wrapper" style="height:0.5px;width:0.5px"></div>
+        <button type="submit" value="Signup">Signup</button>
+    </form>
+   </div>
+{#{% endblock %}#}
+
+
+{#                {% if field.help_text %}#}
+{#                  <p style="color: grey">{{ field.help_text }}</p>#}
+{#                {% endif %}#}
+{#                {% for error in field.errors %}#}
+{#                  <p style="color:red">{{ error }}</p>#}
+{#                {% endfor %}#}
