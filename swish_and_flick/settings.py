@@ -25,7 +25,7 @@ SECRET_KEY = '327002==wdfp^o4fb*%a#*b(fa&4+16*8lk%xu_+vmg2m7rtv9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['beckss.pythonanywhere.com']
 
 
 # Application definition
