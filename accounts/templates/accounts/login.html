@@ -15,17 +15,16 @@
     </style>
     <div class="container" style="width:100%">
 {#    <br><br><br>#}
-{#    {% if request.GET.next %}#}
-{#        {% if not user.is_authenticated %}#}
+{#        {% if request.GET.next %}#}
 {#           <p style="font-size:1rem;margin-bottom: -40px" class="center-align">Please log in first!</p><br><br><br>#}
 {#        {% endif %}#}
     <form class="site-form" action="{% url 'accounts:login' %}" method="post">
         {% csrf_token %}
          {% for field in form %}
-                <p style="font-size: 1.5rem">
+                <div style="font-size: 1.1rem">
                     <p class="center-align">{{ field.label_tag }}</p><br>
                     <p style="margin-top: -20px">{{ field }}</p>
-                </p>
+                </div>
          {% endfor %}
 {#        <p style="font-size: 1.5rem">#}
 {#            <label for="id_username">Email</label>#}
@@ -35,8 +34,10 @@
 {#            <label for="id_password">Password</label>#}
 {#            {{ form.password }}#}
 {#        </p>#}
+{#        <script>console.log({% request.GET.next %})</script>#}
         {% if request.GET.next %}
-            <input type="hidden" name="next" value="{{ request.GET.next }}" />
+            <label for="PLEASE">NEXT</label>
+            <input type="text" id="PLEASE" name="next" value="{{ request.GET.next }}" />
         {% endif %}
 
         <div class="wrap">
