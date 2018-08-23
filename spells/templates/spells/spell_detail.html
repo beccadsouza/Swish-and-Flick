@@ -2,14 +2,14 @@
 
 {% block content %}
     <style>
-        .parent {
+        .diffparent {
             /*height: 650px;*/
             width: 100%;
             overflow: hidden;
             position: relative;
         }
 
-        .parent > .bgimage {
+        .diffparent > .diffbgimage {
             position: absolute;
             height: 100%;
             width: 100%;
@@ -20,7 +20,7 @@
             z-index: -1;
         }
 
-        .parent:hover > .bgimage {
+        .diffparent:hover > .diffbgimage {
             transform: scale(2,2);
         }
         footer{
@@ -31,7 +31,7 @@
         .hr img { position: relative; top: -16px; }
     </style>
 
-<div class="parent">
+<div class="diffparent">
     <div class="container white-text">
         <div class="center-align hr" style="margin-top: 200px;background-color: rgba(17,100,102,0.5);width: 100%;padding-left:90px;padding-right:90px">
             <br><h1>{{ spell.spell_name }}</h1><br>
@@ -58,6 +58,6 @@
         </div>
         <h6 class="center-align">This post was contributed by {{ spell.contributor }}</h6>
     </div>
-    <div class="bgimage" style="top: 0;position: fixed"></div>
+    <div class="diffbgimage" style="top: 0;position: fixed"></div>
 </div>
 {% endblock %}
