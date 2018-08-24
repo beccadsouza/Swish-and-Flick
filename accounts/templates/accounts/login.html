@@ -5,7 +5,7 @@
     </style>
     <div class="container" style="width:100%">
         {% if request.GET.next %}
-           <p style="font-size:1rem;margin-bottom: -40px" class="center-align">Please log in first!</p>
+           <p style="font-size:1rem;margin-bottom: -40px" class="center-align">{{ next }} Please log in first!</p>
         {% endif %}
         <form class="site-form" action="{% url 'accounts:login' %}" method="post">
             {% csrf_token %}

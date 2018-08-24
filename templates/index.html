@@ -14,6 +14,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
     <style>
+        {#@font-face {#}
+        {#  font-family: 'Harry Potter';#}
+        {#  src: url(../staticfiles/fonts/harrypotter.TTF);#}
+        {# }#}
         nav ul a{
             font-size: 1.5rem;
             top:10px;
@@ -121,7 +125,7 @@
           $('.modal').modal();
           $('#one').load("{% url 'accounts:login' %}");
           $('#two').load("{% url 'accounts:signup' %}");
-
+          {#$('#wrapper').load('{% url 'spells:list' %}');#}
           var onModalClose = function() {$('#one').load("{% url 'accounts:login' %}");};
           var modal = document.querySelector('#terms1');
           M.Modal.init(modal,{
