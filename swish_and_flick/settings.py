@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'beckss.pythonanywhere.com',
+    'SwishAndFlick.pythonanywhere.com',
 ]
 
 
