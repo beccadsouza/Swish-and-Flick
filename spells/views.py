@@ -22,4 +22,4 @@ def spell_create(request):
             return redirect('spells:list')
     else:
         form = forms.CreateSpell()
-    return render(request, 'spells/spell_create.html', { 'form': form, 'next': request.GET.next})
+    return render(request, 'spells/spell_create.html', { 'form': form})

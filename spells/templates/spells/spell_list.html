@@ -54,18 +54,10 @@
                                 </a>
                             </div>
                         </div>
-{#                        <div class="text-2">#}
-{#                            <a href="{% url 'spells:detail' slug=spell.slug %}" style="font-size: 4rem">#}
-{#                                {{ spell.spell_name }}#}
-{#                            </a>#}
-{#                        </div>#}
                     </div>
                 {% endfor %}
         </div>
         {% if messages %}
-        {#    <script>#}
-        {#        alert({{ messages }});#}
-        {#    </script>#}
             <ul class="messages" hidden>
                 {% for message in messages %}
                 <li id="msg">{{ message }}</li>
