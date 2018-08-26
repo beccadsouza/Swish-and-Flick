@@ -18,6 +18,7 @@
             border-color: white;
             padding: 15px;
         }
+        #id_image{font-family: "Harry Potter";}
 </style>
     <div class="container" id="terms1">
     <br><br><br>
@@ -27,7 +28,7 @@
         {% for field in form %}
             <p style="font-size: 5rem">
                 {{ field.label_tag }}<br>
-                <span style="font-size:0.2em ">{{ field }}</span>
+                <span style="font-size:0.2em;font-family: 'Harry Potter'">{{ field }}</span>
             </p>
         {% endfor %}
 
