@@ -1,150 +1,186 @@
 {% load static from staticfiles  %}
 <html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
-    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="icon" href="{% static 'img/icon.png' %}">
-    <title>Swish and Flick</title>
-    <script src="/staticfiles/js/materialize.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+        <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'img/icon.png' %}">
 
-    <style>
-        nav ul a{
-            font-size: 1.5rem;
-            top:10px;
-        }
-        nav button{
-            background: none;
-            color: #fff;
-            cursor: pointer;
-            border: 0;
-            margin-top:17px;
-            font-family: "Harry Potter",sans-serif;
-            font-size: 1.5rem;
-        }
-        .modal { width: 500px !important ; background-color: rgba(0, 0, 0, 0.67)!important;}
-        .modal button {text-align: center}
-    </style>
 
-</head>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+        <title>Swish and Flick</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
-<body style="font-family: 'Harry Potter',sans-serif">
+            <style>
 
-<div class="parent">
-    <nav class="nav-wrapper transparent z-depth-0" style="margin-top: 10px;position: fixed;z-index: 10;">
-        <div class="container">
-            <a href="{% url 'home' %}" class="brand-logo">
-                <img src='{% static "img/saf.png" %}' style="width: 200px;"/>
-            </a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="{% url 'home' %}">Home</a></li>
+                .brand-logo img{
+                    width: 200px;
+                    alignment: center;
+                }
+                @media screen and (max-width: 425px){
+                    .parent{
+                      min-height: 500px;
+                    }
+                    #first,#second{
+                        font-size: 35px;
+                    }
+                }
+                nav ul a{
+                    font-size: 1.5rem;
+                    top:10px;
+                }
+                nav button{
+                    background: none;
+                    color: #fff;
+                    cursor: pointer;
+                    border: 0;
+                    margin-top:17px;
+                    font-family: "Harry Potter",sans-serif;
+                    font-size: 1.5rem;
+                }
+                .modal { width: 500px !important ; background-color: rgba(0, 0, 0, 0.67)!important;}
+                .modal button {text-align: center}
+            </style>
 
+    </head>
+
+    <body style="font-family: 'Harry Potter',sans-serif">
+
+    <div class="parent">
+        <nav class="nav-wrapper transparent z-depth-0" style="margin-top: 10px;position: fixed;z-index: 10;">
+            <div class="container">
+                <a href="{% url 'home' %}" class="brand-logo">
+                    <img src='{% static "img/saf.png" %}'/>
+                </a>
+                <a href="#" class="sidenav-trigger" data-target="mobile-menu">
+                  <i class="material-icons">menu</i>
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'spells:create' %}">Create Post</a></li>
-                {% if user.is_authenticated %}
-                    <li>
-                        <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
-                            {% csrf_token %}
-                            <button type="submit">Logout</button>
-                        </form>
-                    </li>
-                    <li><a href="#" style="color: rgba(250,235,215,0)">..........</a></li>
-                {% else %}
-{#                    <li><a href="#" id="createbefore">Create Post</a></li>#}
-                    <li><a class="modal-trigger" href="#terms1">Login </a></li>
-                    <li><a class="modal-trigger" href="#terms2">Signup</a></li>
-                {% endif %}
-            </ul>
+                    {% if user.is_authenticated %}
+                        <li>
+                            <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Logout</button>
+                            </form>
+                        </li>
+                        <li><a href="#" style="color: rgba(250,235,215,0)">..........</a></li>
+                    {% else %}
+                        <li><a class="modal-trigger" href="#terms1">Login </a></li>
+                        <li><a class="modal-trigger" href="#terms2">Signup</a></li>
+                    {% endif %}
+                </ul>
+                <ul class="sidenav grey lighten-2" id="mobile-menu" style="background-color: rgba(220,60,121,0.5)">
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'spells:create' %}">Create Post</a></li>
+                    {% if user.is_authenticated %}
+                        <li>
+                            <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Logout</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li><a class="modal-trigger" href="#terms1">Login </a></li>
+                        <li><a class="modal-trigger" href="#terms2">Signup</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+        <div class="container valign-wrapper" style="height: 550px">
+            <h3 class="white-text center-align" style="word-spacing: 7px;margin-top: 100px" id="first">
+                Spells and charms, cast with a swish and a flick, and the right incantation...
+            </h3>
         </div>
-    </nav>
-    <div class="container valign-wrapper" style="height: 550px">
-        <h3 class="white-text center-align" style="word-spacing: 7px;margin-top: 100px">
-            Spells and charms, cast with a swish and a flick, and the right incantation...
-        </h3>
+        <div class="bgimage" style="top: 0;position: fixed"></div>
     </div>
-    <div class="bgimage" style="top: 0;position: fixed"></div>
-</div>
 
-<div class="parallax-container" style="background: rgba(0,0,0,0.67);">
-    <div class="parallax" style="background-attachment: fixed;">
-        <img src='{% static 'img/owl1.jpg' %}' alt="why" class="responsive-img" style="">
-    </div>
-    <div class="container valign-wrapper" style="width:100vw;height: 500px">
-        <h3 class=" center-align" style="word-spacing: 7px;margin-top: 200px;color: #bebffa;">
-            Every witch and wizard thanks Swish and Flick for their success in their OWLs!<br><br>
-            Accio Outstanding grades!<br><br><br><br>
-        </h3>
-        <div id="wrapper" style="height: 2px;width: 2px"></div>
-    </div>
-</div>
-<div class="wrapper">
-    {% block content %}
-    {% endblock %}
-</div>
-
-    <div id="terms1" class="modal">
-          <div class="modal-content" id="one" style="width: 500px">
+        <div class="parallax-container" style="background: rgba(0,0,0,0.67);">
+            <div class="parallax" style="background-attachment: fixed;">
+                <img src='{% static 'img/owl1.jpg' %}' alt="why" class="responsive-img" style="">
+            </div>
+            <div class="container valign-wrapper" style="width:100vw;height: 500px" id="special">
+                <h3 id="second" class="center-align" style="word-spacing: 7px;margin-top: 200px;">
+                    <span id="third" style="color: #bebffa;">
+                        Every witch and wizard thanks Swish and Flick for their success in their OWLs!<br><br>
+                        Accio Outstanding grades!<br><br><br><br>
+                    </span>
+                </h3>
+                <div id="wrapper" style="height: 2px;width: 2px"></div>
+            </div>
         </div>
-    </div>
-    <div id="terms2" class="modal">
-          <div class="modal-content" id="two" style="width: 500px">
+        <div class="wrapper">
+            {% block content %}
+            {% endblock %}
         </div>
-    </div>
+
+        <div id="terms1" class="modal">
+              <div class="modal-content" id="one" style="width: 500px">
+            </div>
+        </div>
+        <div id="terms2" class="modal">
+              <div class="modal-content" id="two" style="width: 500px">
+            </div>
+        </div>
 
 
-<footer class="page-footer" style="background-color:#264878;margin-top: -1px">
-    <div class="footer-copyright" style="background-color:#264878;">
-        <div class="container center-align white-text">
-            <a href="{% url 'home' %}" style="color: white">&copy; 2018 Swish and Flick</a></div>
-    </div>
-</footer>
+    <footer class="page-footer" style="background-color:#264878;margin-top: -1px">
+        <div class="footer-copyright" style="background-color:#264878;">
+            <div class="container center-align white-text">
+                <a href="{% url 'home' %}" style="color: white">&copy; 2018 Swish and Flick</a></div>
+        </div>
+    </footer>
 
-<!-- Compiled and minified JavaScript -->
-<script src="{%  static 'js/sparkle.min.js' %}"></script>
-<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-<script src="{% static 'js/jquery-3.3.1.js' %}"></script>
-<script src="{% static 'js/materialize.js' %}"></script>
-<script src="/staticfiles/js/materialize.min.js"></script><script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
- <script>
-    $(document).ready(function(){
-      $('.modal').modal();
-      $('.parallax').parallax();
-    });
- </script>
-<script>
-      $(document).ready(function(){
-          $('.modal').modal();
-          $('#one').load("{% url 'accounts:login' %}");
-          $('#two').load("{% url 'accounts:signup' %}");
-          {#$('#wrapper').load('{% url 'spells:list' %}');#}
-          var onModalClose = function() {$('#one').load("{% url 'accounts:login' %}");};
-          var modal = document.querySelector('#terms1');
-          M.Modal.init(modal,{
-                onCloseEnd: onModalClose
-          });
-
-          {#$( "#createbefore" ).click(function() {#}
-                {#alert( "Please login first" );#}
-          {#      $('#terms1').modal('open');#}
-          {# });#}
-
-          if(window.location.href.indexOf('#terms1') !== -1) {
-            $('#terms1').modal('open');
-          }
+    <!-- Compiled and minified JavaScript -->
+    <script src="{%  static 'js/sparkle.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.3.1.js' %}"></script>
 
 
-    });
-</script>
-<script>
-    (function () {
-        let sparkle = new Sparkle();
-        sparkle.init('#wrapper');
-    })();
-</script>
-</body>
+         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+         <script>
+            $(document).ready(function(){
+                  $('.sidenav').sidenav();
+                  $('.modal').modal();
+                  $('.parallax').parallax();
+            });
+         </script>
+    <script>
+          $(document).ready(function(){
+              $('.modal').modal();
+              $('#one').load("{% url 'accounts:login' %}");
+              $('#two').load("{% url 'accounts:signup' %}");
+              {#$('#wrapper').load('{% url 'spells:list' %}');#}
+              var onModalClose = function() {$('#one').load("{% url 'accounts:login' %}");};
+              var modal = document.querySelector('#terms1');
+              M.Modal.init(modal,{
+                    onCloseEnd: onModalClose
+              });
+
+              {#$( "#createbefore" ).click(function() {#}
+                    {#alert( "Please login first" );#}
+              {#      $('#terms1').modal('open');#}
+              {# });#}
+
+              if(window.location.href.indexOf('#terms1') !== -1) {
+                $('#terms1').modal('open');
+              }
+        });
+    </script>
+    <script>
+        (function () {
+            let sparkle = new Sparkle();
+            sparkle.init('#wrapper');
+        })();
+    </script>
+    </body>
 </html>
