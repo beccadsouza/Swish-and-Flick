@@ -3,4 +3,4 @@ Swish and Flick is an educational website on spells and charms for the students 
 
 This Django CMS was styled using Materialize CSS
  
-** Link to the website : http://swishandflick.pythonanywhere.com/**
+**Link to the website : http://swishandflick.pythonanywhere.com/**
