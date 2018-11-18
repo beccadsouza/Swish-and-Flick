@@ -1,0 +1,29 @@
+.parent {
+    height: 650px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.parent > .bgimage {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transition: all 15s ease-in;
+    transform: scale(1,1);
+    background-image: url(../img/background.jpg);
+    background-size: cover;
+    z-index: -1;
+}
+
+.parent:hover > .bgimage {
+    transform: scale(2,2);
+}
+
+.col > div{
+    background: #c730e6;
+    height: 400px;
+    margin: -10px;
+    border-color: #43104d;
+    border: 2px;
+}
